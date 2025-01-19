@@ -24,7 +24,7 @@ def get_requirements(file_path:str)->List[str]:
 
 setup(
     name = 'machineInd',
-    version = '1.0',
+    version = '0.0.1',
     description= 'Machine Downtime Prediction',
     long_description = long_description,
     author = 'Ahmad Ayantola',
