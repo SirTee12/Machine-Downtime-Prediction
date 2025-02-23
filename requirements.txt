@@ -6,4 +6,5 @@ fsspec
 missingno
 statsmodels
 predictr
+xgboost
 #-e .
