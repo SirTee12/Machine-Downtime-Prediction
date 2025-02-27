@@ -7,4 +7,5 @@ missingno
 statsmodels
 predictr
 xgboost
+optuna
 #-e .
