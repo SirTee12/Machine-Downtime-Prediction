@@ -9,4 +9,5 @@ predictr
 xgboost
 optuna
 plotly
+nbformat
 #-e .
