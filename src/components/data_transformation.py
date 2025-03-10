@@ -12,4 +12,14 @@ from sklearn.preprocessing import StandardScaler, RobustScaler, \
 from src.exception import CustomException
 from src.logging import logging
 
+@dataclass
 
+class DataTransformationConfig():
+    preprocessor_obj_file_path = os.path.join('Artifacts', 'Preprocessor.pkl')
+    
+
+class DataTransformation():
+    def __init__(self):
+        self.data_transformation_config = DataTransformationConfig()
+        
+    
