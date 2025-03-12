@@ -58,5 +58,19 @@ class DataTransformation():
             raise CustomException(e, sys)
         
 
+    def apply_label_encoding(self, df, target_col):
+        
+        '''
+        Apply label encoding to the target variable
+        '''
+        try: 
+            label_encoder = LabelEncoder()
+            df[target_col] = label_encoder.fit_transform(df[target_col])
+        
+            # print log information
+            logging.info(f'Label encoding applied on target variable')
+            return df, label_encoder
+        except Exception as e:
+            raise CustomException(e, sys)
             
     
