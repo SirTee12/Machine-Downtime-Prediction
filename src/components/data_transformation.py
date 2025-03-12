@@ -74,3 +74,47 @@ class DataTransformation():
             raise CustomException(e, sys)
             
     
+    def initiate_data_tansformation(self, train_path, test_path):
+        try:
+            train_df = pd.read_csv(train_path)
+            test_df = pd.read_csv(test_path)
+            
+            logging.info(f'Read train and test data completed')
+            logging.info(f'obtaining the preprocessor object')
+            
+            preprocessor_obj = self.get_data_transformer_object()
+            
+            target_col_name = 'Downtime'
+            Label_Encoder = LabelEncoder()
+            
+            # get the train features and target variables and apply label encoding to the 
+            # teh target variable
+            input_feature_train = train_df.drop(columns= [
+                target_col_name, 'Air_Sysem_Pressure(Pa)', 
+                'Spindle_Bearing_Temperature', 'Voltage(volts)'
+            ], axis = 1)
+            
+            target_feature_train = Label_Encoder.fit_transform(train_df[target_col_name])
+
+            # get the test features and target variables and apply label encoding to the 
+            # teh target variable 
+            input_feature_test = test.drop(columns= [
+                target_col_name, 'Air_Sysem_Pressure(Pa)', 
+                'Spindle_Bearing_Temperature', 'Voltage(volts)'
+            ], axis = 1)       
+            
+            target_feature_test = Label_Encoder.transform(test_df[target_col_name])
+            
+            logging.info(f'Applying the preprocesing objec to training and test data')
+            
+            
+            input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train)
+            input_feature_test_arr = preprocessor_obj.fit_transform(input_feature_test)
+            
+            logging.info(f'Data transformation complete')
+            logging.info(f'saved preprocessing object')
+            
+        except Exception as e:
+            raise CustomException(e, sys)
+            
+            
