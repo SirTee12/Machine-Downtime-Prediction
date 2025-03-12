@@ -11,10 +11,16 @@ from sklearn.preprocessing import StandardScaler, RobustScaler, \
                                 
 from src.exception import CustomException
 from src.logging import logging
+from sklearn.pipeline import Pipeline
+from sklearn.impute import KNNImputer
 
 @dataclass
 
 class DataTransformationConfig():
+    '''
+    Created a class to store the the file path for the preprocessor implementation file 
+    '''
+    
     preprocessor_obj_file_path = os.path.join('Artifacts', 'Preprocessor.pkl')
     
 
@@ -22,4 +28,35 @@ class DataTransformation():
     def __init__(self):
         self.data_transformation_config = DataTransformationConfig()
         
+    def get_data_transformer_object(self):
+        try: 
+            numeric_col = ['Coolant_Temperature','Hydraulic_Oil_Temperature',
+                            'Spindle_Vibration', 'Tool_Vibration', 'Torque(Nm)',
+                             'Hydraulic_Pressure(Pa)', 'Coolant_Pressure(Pa)',
+                             'Cutting(N)', 'Spindle_Speed(RPS)']
+            
+            num_pipeline  = Pipeline(
+                
+                steps = [
+                    ('imputer', KNNImputer(n_neighbors=3)),
+                    ('Robust Scaler', RobustScaler()),
+                    ('Standard Scaler', StandardScaler())
+                ]
+            )
+            
+            logging.info(f'Numerical Column {numeric_col}')
+            
+            preprocessor = ColumnTransformer(
+                [
+                    ('num_pipeline', num_pipeline, numeric_col)
+                ]
+            )
+            
+            return preprocessor
+        
+        except Exception as e:
+            raise CustomException(e, sys)
+        
+
+            
     
