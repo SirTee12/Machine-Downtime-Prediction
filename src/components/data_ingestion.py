@@ -15,5 +15,42 @@ class dataIngestionConfig:
     test_data_path: str = os.path.join('Artifacts', 'test.csv')
     raw_data_path: str = os.path.join('Artifacts', 'raw.csv')
     
-
+class dataIngestion:
+    def __init__(self):
+        self.ingestion_config = dataIngestionConfig()
+        
+    def initialize_data_ingestion(self):
+        logging.info(f'entered the data ingestion method or component')
+        
+        try:
+            data = pd.read_csv('../data/machine_downtime_cleaned.csv')
+            logging.info(f'read dataset as a dataframe')
+            
+            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
+            
+            data.to_csv(self.ingestion_config.raw_data_path, header = True,
+                        index = False)
+            stratify_y = data['Downtime']
+            logging.info(f'train test split initiated')
+            
+            train_set, test_set = train_test_split(data, test_size=0.25,
+                                                   random_state=42, shuffle=True,
+                                                   stratify=stratify_y)
+            
+            train_set.to_scv(self.ingestion_config.train_data_path, header = False,
+                             index = False)
+            test_set.to_scv(self.ingestion_config.test_data_path, header = False,
+                             index = False)
+            
+            logging.info(f'data ingestion is completed')
+            
+            return(
+                self.ingestion_config.train_data_path,
+                self.ingestion_config.test_data_path
+            )
+            
+        except Exception as e:
+            raise CustomException(e, sys)
+        
+        
         
