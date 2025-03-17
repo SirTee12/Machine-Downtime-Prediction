@@ -32,9 +32,9 @@ class DataTransformation():
     def get_data_transformer_object(self):
         try: 
             numeric_col = ['Coolant_Temperature','Hydraulic_Oil_Temperature',
-                            'Spindle_Vibration', 'Tool_Vibration', 'Torque(Nm)',
-                             'Hydraulic_Pressure(Pa)', 'Coolant_Pressure(Pa)',
-                             'Cutting(N)', 'Spindle_Speed(RPS)']
+                            'Spindle_Vibration', 'Tool_Vibration', 'Torque',
+                             'Hydraulic_Pressure', 'Coolant_Pressure',
+                             'Cutting', 'Spindle_Speed']
             
             num_pipeline  = Pipeline(
                 
