@@ -13,6 +13,7 @@ from src.exception import CustomException
 from src.logging import logging
 from sklearn.pipeline import Pipeline
 from sklearn.impute import KNNImputer
+from src.utils import save_object
 
 @dataclass
 
@@ -121,6 +122,18 @@ class DataTransformation():
             
             logging.info(f'Data transformation complete')
             logging.info(f'saved preprocessing object')
+
+            save_object(
+                file_path=self.data_transformation_config.preprocessor_obj_file_path,
+                obj= preprocessor_obj
+            )
+
+            return(
+                train_arr,
+                test_arr,
+                self.data_transformation_config.preprocessor_obj_file_path
+            )
+            
             
         except Exception as e:
             raise CustomException(e, sys)
