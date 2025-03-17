@@ -21,3 +21,42 @@ class PredictPipeline:
         except Exception as e:
             raise CustomException(e, sys)
         
+class CustomData:
+    def __init__(self,
+                 Coolant_Temperature:float,
+                 Hydraulic_Oil_Temperature:float,
+                 Spindle_Vibration:float, 
+                 Tool_Vibration:float, 
+                 Torque:float,
+                 Hydraulic_Pressure:float, 
+                 Coolant_Pressure:float,
+                 Cutting:float, 
+                 Spindle_Speed:float
+                 ):
+        self.Coolant_Temperature = Coolant_Temperature
+        self.Hydraulic_Pressure = Hydraulic_Pressure
+        self.Hydraulic_Oil_Temperature = Hydraulic_Oil_Temperature
+        self.Spindle_Vibration = Spindle_Vibration
+        self.Tool_Vibration = Tool_Vibration
+        self.Torque = Torque
+        self.Coolant_Pressure = Coolant_Pressure
+        self.Cutting = Cutting
+        self.Spindle_Speed = Spindle_Speed
+        
+    def get_data_as_dataframe(self):
+        try:
+            custom_data_input_dict = {
+                'Coolant_Temperature':self.Coolant_Temperature,
+                'Hydraulic_Pressure':self.Hydraulic_Pressure,
+                'Hydraulic_Oil_Temperature':self.Hydraulic_Oil_Temperature,
+                'Spindle_Vibration':self.Spindle_Vibration,
+                'Tool_Vibration':self.Tool_Vibration,
+                'Torque':self.Torque,
+                'Coolant_Pressure':self.Coolant_Pressure,
+                'Cutting':self.Cutting,
+                'Spindle_Speed':self.Spindle_Speed
+            }
+            return custom_data_input_dict
+        
+        except Exception as e:
+            raise CustomException(e, sys)
