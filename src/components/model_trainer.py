@@ -29,7 +29,7 @@ class ModelTrainer:
     def __init__(self):
         self.model_trainer = ModelTrainerConfig()
         
-    def initiate_model_trainer(self, train_array, test_array, target_column_index):
+    def initiate_model_trainer(self, train_array, test_array):
         logging.info('split training and test data set')
         
         try:
