@@ -34,12 +34,12 @@ class ModelTrainer:
         
         try:
             # extract the target column and feature columns dynamically
-            X_train = np.delete(train_array, target_column_index, axis = 1) # remove target column
-            y_train = train_array[:, target_column_index] # extract target column
-            
-            X_test = np.delete(test_array, target_column_index, axis = 1) # remove target column 
-            y_test = test_array[:, target_column_index] # extract the target column
-            
+            X_train, y_train, X_test, y_test = (
+                train_array[:, :-1],
+                train_array[:, -1],
+                test_array[:, :-1],
+                test_array[:, -1])
+                       
             model = GradientBoostingClassifier()
             best_params = {'n_estimators' :  300, 'learning_rate':0.18476368934488233,
                         'max_depth':3, 'subsample': 0.8349830456457842}
