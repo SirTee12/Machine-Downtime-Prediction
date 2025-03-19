@@ -75,7 +75,12 @@ def evaluate_model(X_train, y_train, X_test, y_test,
             'roc_auc':roc_auc_scores
         }
         
-        return report
+        logging.info(f'converting the output back to its original form')
+        # create a label mapping
+        label_mapping = {1:'Machine Failure', 0:'No Machine Failure'}
+        y_pred_category = [label_mapping[pred] for pred in y_pred]
+        
+        return report, y_pred_category
     
     except Exception as e:
         raise CustomException(e, sys)
@@ -89,9 +94,3 @@ def load_object(file_path):
         
     except EOFError as e:
         raise CustomException(e, sys)        
-    
-Gradient Boost Best params:
-	n_estimators: 300
-	learning_rate: 0.18476368934488233
-	max_depth: 3
-	subsample: 0.8349830456457842
