@@ -80,7 +80,7 @@ def evaluate_model(X_train, y_train, X_test, y_test,
         label_mapping = {1:'Machine Failure', 0:'No Machine Failure'}
         y_pred_category = [label_mapping[pred] for pred in y_pred]
         
-        return report, y_pred_category
+        return report
     
     except Exception as e:
         raise CustomException(e, sys)

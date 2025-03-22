@@ -1,3 +1,4 @@
+Date,Machine_ID,Assembly_Line_No,Coolant_Temperature,Hydraulic_Oil_Temperature,Spindle_Bearing_Temperature,Spindle_Vibration,Tool_Vibration,Voltage,Torque,Hydraulic_Pressure,Coolant_Pressure,Air_System_Pressure,Cutting,Spindle_Speed,Downtime
 2022-04-05,Makino-L2-Unit1-2015,Shopfloor-L2,25.6,39.6,34.4,1.064,29.041,386.0,15.1197393,5577000.0,471167.2,695912.7,3910.0,341.7,Machine_Failure
 2022-02-18,Makino-L3-Unit1-2015,Shopfloor-L3,29.9,46.5,35.2,1.014,15.572,307.0,33.92336502,12204912.4,610371.0,703061.4,1880.0,401.8,No_Machine_Failure
 2022-04-07,Makino-L1-Unit1-2013,Shopfloor-L1,20.3,43.7,37.3,0.738,27.525,315.0,23.69828742,11304089.1,314099.5,590110.0,2940.0,295.4,No_Machine_Failure
