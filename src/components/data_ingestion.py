@@ -38,9 +38,9 @@ class dataIngestion:
                                                    random_state=42, shuffle=True,
                                                    stratify=stratify_y)
             
-            train_set.to_csv(self.ingestion_config.train_data_path, header = False,
+            train_set.to_csv(self.ingestion_config.train_data_path, header = True,
                              index = False)
-            test_set.to_csv(self.ingestion_config.test_data_path, header = False,
+            test_set.to_csv(self.ingestion_config.test_data_path, header = True,
                              index = False)
             
             logging.info(f'data ingestion is completed')

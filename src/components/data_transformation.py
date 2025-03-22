@@ -91,8 +91,8 @@ class DataTransformation():
             # get the train features and target variables and apply label encoding to the 
             # teh target variable
             input_feature_train = train_df.drop(columns= [
-                target_col_name, 'Air_Sysem_Pressure(Pa)', 
-                'Spindle_Bearing_Temperature', 'Voltage(volts)'
+                target_col_name, 'Air_Sysem_Pressure', 
+                'Spindle_Bearing_Temperature', 'Voltage'
             ], axis = 1)
             
             target_feature_train = Label_Encoder.fit_transform(train_df[target_col_name])
@@ -100,8 +100,8 @@ class DataTransformation():
             # get the test features and target variables and apply label encoding to the 
             # teh target variable 
             input_feature_test = test_df.drop(columns= [
-                target_col_name, 'Air_Sysem_Pressure(Pa)', 
-                'Spindle_Bearing_Temperature', 'Voltage(volts)'
+                target_col_name, 'Air_Sysem_Pressure', 
+                'Spindle_Bearing_Temperature', 'Voltage'
             ], axis = 1)       
             
             target_feature_test = Label_Encoder.transform(test_df[target_col_name])
