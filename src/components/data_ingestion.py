@@ -24,7 +24,7 @@ class dataIngestion:
         logging.info(f'entered the data ingestion method or component')
         
         try:
-            data = pd.read_csv('../data/machine_downtime_cleaned.csv')
+            data = pd.read_csv('C:/Users/Administrator/Documents/Data Science Projects/Machine-Downtime-Prediction/data/machine_downtime_cleaned.csv')
             logging.info(f'read dataset as a dataframe')
             
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
@@ -38,9 +38,9 @@ class dataIngestion:
                                                    random_state=42, shuffle=True,
                                                    stratify=stratify_y)
             
-            train_set.to_scv(self.ingestion_config.train_data_path, header = False,
+            train_set.to_csv(self.ingestion_config.train_data_path, header = False,
                              index = False)
-            test_set.to_scv(self.ingestion_config.test_data_path, header = False,
+            test_set.to_csv(self.ingestion_config.test_data_path, header = False,
                              index = False)
             
             logging.info(f'data ingestion is completed')
