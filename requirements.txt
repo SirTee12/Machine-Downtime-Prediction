@@ -10,4 +10,5 @@ xgboost
 optuna
 plotly
 nbformat
+Flask
 #-e .
