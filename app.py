@@ -1,8 +1,17 @@
 from flask import Flask
+from flask import render_template
+
+import pandas as pd
 
 # initiate the app
-app = Flask(__name__)
+application = Flask(__name__)
 
-app.route('/')
+app = application
+
+@app.route('/')
 def hello():
-    return "<p>Hello, World!</p>"
+    return render_template('index.html')
+
+
+if __name__ == '__main__':
+    app.run(debug = True)
