@@ -9,5 +9,5 @@ body {
     width: 100vw;
     top: 0;
     left: 0;
-    background: url(machine-pred.jpg);
+    background: url(../static/machine-pred.jpg);
 }
